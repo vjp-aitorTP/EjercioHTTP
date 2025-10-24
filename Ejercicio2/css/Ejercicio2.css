@@ -1,0 +1,66 @@
+body {
+  background-color: #f8f9fa;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.navbar-brand {
+  color: #6c757d !important;
+  font-weight: 600;
+}
+
+.nav-link {
+  color: #6c757d !important;
+  margin-right: 10px;
+}
+
+.nav-link:hover {
+  color: #000 !important;
+}
+
+/* Cards */
+.card {
+  border-radius: 10px;
+  border: 1px solid #dee2e6;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.card-title {
+  font-weight: 600;
+}
+
+/* Badges personalizados */
+.badge {
+  padding: 0.4em 0.7em;
+  border-radius: 0.4rem;
+  font-size: 0.85rem;
+}
+
+.badge-pendiente {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.badge-haciendo {
+  background-color: #ffc107;
+  color: #000;
+}
+
+.badge-completada {
+  background-color: #28a745;
+  color: #fff;
+}
+
+/* Título de sección */
+h2 {
+  font-weight: 600;
+}
