@@ -15,6 +15,7 @@ export class ModalNuevaTarea {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       this.modal.hide();
+      form.reset();
       window.scrollTo(0, 0); // Vuelve arriba
     });
   }
