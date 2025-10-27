@@ -64,3 +64,20 @@ body {
 h2 {
   font-weight: 600;
 }
+
+.modal-content {
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.modal-content h5 {
+  font-weight: 600;
+}
+
+label {
+  font-size: 0.9rem;
+}
+
+button[type="submit"] {
+  width: 100%;
+}

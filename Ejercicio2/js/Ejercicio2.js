@@ -1,3 +1,5 @@
+import { ModalNuevaTarea } from "./ModalCrearTarea.js";
+
 var peticionPrincipal = new XMLHttpRequest();
 peticionPrincipal.open("GET","http://localhost:3000/tasks")
 peticionPrincipal.addEventListener("readystatechange", procesarPeticion)
@@ -35,3 +37,13 @@ function procesarPeticion(event){
         procesarResultado(resultado);
     }
 }
+
+const modalNuevaTarea = new ModalNuevaTarea();
+
+modalNuevaTarea.cargar().then(() => {
+  const btn = document.getElementById("btnCrearTarea");
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    modalNuevaTarea.mostrar();
+  });
+});

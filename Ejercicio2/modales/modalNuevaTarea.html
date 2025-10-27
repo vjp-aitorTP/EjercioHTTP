@@ -1,0 +1,31 @@
+<div class="modal fade" id="modalNuevaTarea" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-3" style="max-width:400px;margin:auto;">
+      <h5 class="text-center bg-dark text-white py-2 rounded-top">Nueva tarea</h5>
+      <div class="modal-body">
+        <form id="formNuevaTarea" class="d-flex flex-column gap-2">
+          <label for="titulo">Título</label>
+          <input type="text" id="titulo" class="form-control" placeholder="Título">
+
+          <label for="descripcion">Descripción</label>
+          <textarea id="descripcion" class="form-control" rows="3"></textarea>
+
+          <label for="estado">Estado</label>
+          <select id="estado" class="form-select">
+            <option>Pendiente</option>
+            <option>Haciendo</option>
+            <option>Completada</option>
+          </select>
+
+          <label for="fecha">Fecha</label>
+          <input type="date" id="fecha" class="form-control">
+
+          <label for="hora">Hora</label>
+          <input type="time" id="hora" class="form-control">
+
+          <button type="submit" class="btn btn-primary mt-2">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
