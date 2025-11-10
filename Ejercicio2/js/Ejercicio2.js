@@ -38,6 +38,7 @@ function procesarPeticion(event){
     }
 }
 
+
 const modalNuevaTarea = new ModalNuevaTarea();
 
 modalNuevaTarea.cargar().then(() => {

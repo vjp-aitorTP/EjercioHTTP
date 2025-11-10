@@ -3,7 +3,7 @@ export class ModalNuevaTarea {
     this.modal = null;
   }
 
-  async cargar() {
+  async cargar(callback) {
     const response = await fetch("modales/modalNuevaTarea.html");
     const html = await response.text();
     document.body.insertAdjacentHTML("beforeend", html);
@@ -11,12 +11,40 @@ export class ModalNuevaTarea {
     this.modal = new bootstrap.Modal(document.getElementById("modalNuevaTarea"));
     const form = document.getElementById("formNuevaTarea");
 
-    // Al enviar, cerramos modal y "volvemos al inicio"
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      this.modal.hide();
-      form.reset();
-      window.scrollTo(0, 0); // Vuelve arriba
+
+      const tarea = {
+        titulo: document.getElementById("titulo").value,
+        descripcion: document.getElementById("descripcion").value,
+        estado: document.getElementById("estado").value,
+        fecha: document.getElementById("fecha").value,
+        hora: document.getElementById("hora").value,
+      };
+
+      try {
+        const res = await fetch("http://localhost:3000/tasks", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(tarea)
+        });
+
+        if (!res.ok) throw new Error("Error al crear la tarea");
+
+        const tareaCreada = await res.json();
+
+        if (callback) callback(tareaCreada); // devolvemos la tarea creada al JS principal
+
+        this.modal.hide();
+        form.reset();
+        window.scrollTo(0, 0);
+
+      } catch (error) {
+        console.error(error);
+        alert("No se pudo crear la tarea");
+      }
     });
   }
 
