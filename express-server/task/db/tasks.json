@@ -1,61 +1,50 @@
 [
   {
-    "id": 1,
     "titulo": "_Título1",
     "descripcion": "_Descripción1",
-    "fecha_creacion": "15/08/1888",
-    "estado": "pendiente"
-  },
-  {
-    "id": 2,
-    "titulo": "_Título2",
-    "descripcion": "_Descripción2",
-    "fecha_creacion": "22/10/2010",
-    "estado": "haciendo"
-  },
-  {
-    "id": 3,
-    "titulo": "_Título3",
-    "descripcion": "_Descripción3",
-    "fecha_creacion": "22/08/1888",
-    "estado": "completada"
-  },
-  {
-    "id": 4,
-    "titulo": "_Título4",
-    "descripcion": "_Descripción4",
-    "fecha_creacion": "12/08/1911",
-    "estado": "pendiente"
-  },
-  {
-    "titulo": "_Título_Nuevo",
-    "descripcion": "_Descripción_nueva",
-    "fecha_creacion": "15/08/1888",
     "estado": "pendiente",
-    "id": 5
-  },
-  {
-    "titulo": "ghghghghg",
-    "descripcion": "",
-    "estado": "Pendiente",
-    "fecha": "",
+    "fecha": "1888-08-15",
     "hora": "",
-    "id": 6
-  },
-  {
-    "titulo": "_Titulo5",
-    "descripcion": "_Descripcion5",
-    "estado": "Haciendo",
-    "fecha": "2025-10-30",
-    "hora": "17:21",
     "id": 8
   },
   {
-    "titulo": "asdasdasds",
-    "descripcion": "qweqweqew",
-    "estado": "Haciendo",
-    "fecha": "2025-11-13",
+    "titulo": "_Título2",
+    "descripcion": "_Descripción2",
+    "estado": "haciendo",
+    "fecha": "2010-10-22",
     "hora": "",
     "id": 9
+  },
+  {
+    "titulo": "_Título3",
+    "descripcion": "_Descripción3",
+    "estado": "completada",
+    "fecha": "1888-08-22",
+    "hora": "",
+    "id": 10
+  },
+  {
+    "titulo": "_Título4",
+    "descripcion": "_Descripción4",
+    "estado": "pendiente",
+    "fecha": "1911-08-12",
+    "hora": "",
+    "id": 11
+  },
+  {
+    "titulo": "_Título_Nuevo",
+    "descripcion": "_Descripción_Nueva",
+    "estado": "pendiente",
+    "fecha": "1888-08-15",
+    "hora": "",
+    "id": 12
+  },
+  {
+    "titulo": "Prueba",
+    "descripcion": "Esto es una prueba para comprobar la funcionalidad de la aplicación web",
+    "estado": "haciendo",
+    "fecha": "2025-11-09",
+    "hora": "09:15",
+    "id": 13
   }
 ]

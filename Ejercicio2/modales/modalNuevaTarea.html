@@ -1,28 +1,42 @@
+<!-- Modal para crear una nueva tarea -->
 <div class="modal fade" id="modalNuevaTarea" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content p-3" style="max-width:400px;margin:auto;">
+
+      <!-- Título del modal -->
       <h5 class="text-center bg-dark text-white py-2 rounded-top">Nueva tarea</h5>
+
+      <!-- Cuerpo del modal -->
       <div class="modal-body">
+
+        <!-- Formulario para agregar una nueva tarea -->
         <form id="formNuevaTarea" class="d-flex flex-column gap-2">
+
+          <!-- Campo para el título de la tarea -->
           <label for="titulo">Título</label>
           <input type="text" id="titulo" class="form-control" placeholder="Título">
 
+          <!-- Campo para la descripción de la tarea -->
           <label for="descripcion">Descripción</label>
           <textarea id="descripcion" class="form-control" rows="3"></textarea>
 
+          <!-- Selector para el estado de la tarea -->
           <label for="estado">Estado</label>
           <select id="estado" class="form-select">
-            <option>Pendiente</option>
-            <option>Haciendo</option>
-            <option>Completada</option>
+            <option>pendiente</option>
+            <option>haciendo</option>
+            <option>completada</option>
           </select>
 
+          <!-- Campo para seleccionar la fecha -->
           <label for="fecha">Fecha</label>
           <input type="date" id="fecha" class="form-control">
 
+          <!-- Campo para seleccionar la hora -->
           <label for="hora">Hora</label>
           <input type="time" id="hora" class="form-control">
 
+          <!-- Botón para enviar el formulario -->
           <button type="submit" class="btn btn-primary mt-2">Enviar</button>
         </form>
       </div>

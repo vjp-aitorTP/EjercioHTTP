@@ -4,11 +4,13 @@ const URL_API = "http://localhost:3000/tasks";
 let modoEliminar = false;
 let modoModificar = false;
 
+// Obtenemos la lista de tareas desde la API
 var peticionPrincipal = new XMLHttpRequest();
 peticionPrincipal.open("GET", URL_API);
 peticionPrincipal.addEventListener("readystatechange", procesarPeticion);
 peticionPrincipal.send();
 
+/** Creamos una tarjeta (card) para mostrar los datos de una tarea */
 function crearCardTarea(tarea, container) {
   const fechaTexto = tarea.fecha || tarea.fecha_creacion || "";
   const horaTexto = tarea.hora || "";
@@ -47,13 +49,16 @@ function crearCardTarea(tarea, container) {
   `;
   container.appendChild(div);
 
+  // Configuramos el botón para eliminar la tarea
   const btnEliminar = div.querySelector(".btnEliminarTarea");
   btnEliminar.addEventListener("click", () => eliminarTarea(tarea.id, div));
 
+  // Configuramos el botón para modificar la tarea
   const btnModificar = div.querySelector(".btnModificarTarea");
   btnModificar.addEventListener("click", () => modificarTarea(tarea.id, div));
 }
 
+/** Mostramos todas las tareas en el contenedor principal */
 function procesarResultado(resultado) {
   var divContenedorTareas = document.getElementById("divContenedorTareas");
   divContenedorTareas.innerHTML = "";
@@ -64,6 +69,7 @@ function procesarResultado(resultado) {
   activarModoModificar(modoModificar);
 }
 
+/** Procesamos la respuesta de la API y llamamos a procesarResultado */
 function procesarPeticion(event) {
   if (this.readyState == 4 && this.status == 200) {
     let resultado = JSON.parse(this.responseText);
@@ -71,6 +77,7 @@ function procesarPeticion(event) {
   }
 }
 
+/** Eliminamos una tarea específica y actualizamos la vista */
 function eliminarTarea(id, cardElemento) {
   if (!confirm("¿Seguro que quieres eliminar esta tarea?")) return;
   fetch(`${URL_API}/${id}`, { method: "DELETE" })
@@ -81,6 +88,7 @@ function eliminarTarea(id, cardElemento) {
     .catch((err) => alert("No se pudo eliminar la tarea: " + err.message));
 }
 
+/** Modificamos los datos de una tarea y recargamos la lista */
 function modificarTarea(id, cardElemento) {
   if (!confirm("¿Seguro que quieres modificar esta tarea?")) return;
   const titulo = cardElemento.querySelector(".inputTitulo").value;
@@ -108,11 +116,13 @@ function modificarTarea(id, cardElemento) {
     .catch((err) => alert("No se pudo modificar la tarea: " + err.message));
 }
 
+/** Mostramos u ocultamos los botones de eliminar según el modo */
 function mostrarBotonesEliminar(mostrar) {
   const botones = document.querySelectorAll(".btnEliminarTarea");
   botones.forEach((btn) => btn.classList.toggle("d-none", !mostrar));
 }
 
+/** Activamos o desactivamos el modo de modificación */
 function activarModoModificar(activar) {
   const botones = document.querySelectorAll(".btnModificarTarea");
   const titulos = document.querySelectorAll(".inputTitulo");
@@ -135,6 +145,7 @@ function activarModoModificar(activar) {
   fechaTexto.forEach((f) => f.classList.toggle("d-none", activar));
 }
 
+// Cargamos el modal de nueva tarea y mostramos al hacer clic
 const modalNuevaTarea = new ModalNuevaTarea();
 modalNuevaTarea.cargar().then(() => {
   const btn = document.getElementById("btnCrearTarea");
@@ -144,6 +155,7 @@ modalNuevaTarea.cargar().then(() => {
   });
 });
 
+// Gestionamos el modo eliminar desde el menú
 const btnEliminarMenu = document.getElementById("btnEliminar");
 const btnModificarMenu = document.getElementById("btnModificar");
 
@@ -159,6 +171,7 @@ btnEliminarMenu.addEventListener("click", (e) => {
   btnEliminarMenu.textContent = modoEliminar ? "Cancelar eliminación" : "Eliminar tarea";
 });
 
+// Gestionamos el modo modificar desde el menú
 btnModificarMenu.addEventListener("click", (e) => {
   e.preventDefault();
   if (modoEliminar) { 
@@ -171,11 +184,11 @@ btnModificarMenu.addEventListener("click", (e) => {
   btnModificarMenu.textContent = modoModificar ? "Cancelar modificación" : "Modificar Tarea";
 });
 
+// Volvemos a la vista principal y desactivamos los modos activos al hacer clic en el logo
 const logoTareas = document.getElementById("Inicio");
 
 logoTareas.addEventListener("click", (e) => {
   e.preventDefault();
-  // Cerrar cualquier modo activo
   if (modoEliminar) {
     modoEliminar = false;
     mostrarBotonesEliminar(false);
@@ -186,7 +199,6 @@ logoTareas.addEventListener("click", (e) => {
     activarModoModificar(false);
     btnModificarMenu.textContent = "Modificar Tarea";
   }
-  // Volver a cargar la lista principal de tareas
   peticionPrincipal.open("GET", URL_API);
   peticionPrincipal.addEventListener("readystatechange", procesarPeticion);
   peticionPrincipal.send();
